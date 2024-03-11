@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import Post
 
-def suma(request,pk):
+def suma_old(request,pk):
     post = get_object_or_404(Post, pk=pk)
     tmp=post.liczby.split()
     for i in range(0, len(tmp)):

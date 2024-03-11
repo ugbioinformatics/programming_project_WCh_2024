@@ -12,7 +12,7 @@ class Post(models.Model):
     body = models.TextField()
     liczby = models.TextField()
     suma = models.IntegerField()
-
+    URL = models.URLField()
     def __str__(self):
         return self.title
 

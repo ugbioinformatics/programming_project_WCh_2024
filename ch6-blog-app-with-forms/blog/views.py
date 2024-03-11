@@ -1,11 +1,11 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # new
 from django.urls import reverse_lazy  # new
-from django.shortcuts import get_object_or_404, render
-
+from django.shortcuts import get_object_or_404, render, redirect
+from .forms import Suma
 
 from .models import Post
-
+"""
 def suma_old(request,pk):
     post = get_object_or_404(Post, pk=pk)
     tmp=post.liczby.split()
@@ -14,7 +14,23 @@ def suma_old(request,pk):
     post.suma=sum(tmp)
     post.save()
     return render(request, 'post_detail.html', {'post': post})
-
+"""
+def suma(request):
+      if request.method == 'POST':
+          form = Suma(request.POST)
+          if form.is_valid():
+              body = form.cleaned_data["body"]
+              title ='Suma'
+              author = "test"
+              tmp=body.split()
+              for i in range(0, len(tmp)):
+                    tmp[i]=int(tmp[i])  
+              suma=sum(tmp)
+              post = Post(body=body, title=title, author=author,suma=suma)
+                       
+              post.save()
+              return redirect('/')
+      return redirect('/')
 
 class BlogListView(ListView):
     model = Post

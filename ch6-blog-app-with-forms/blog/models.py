@@ -4,10 +4,10 @@ from django.urls import reverse
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    author = models.ForeignKey(
-        "auth.User",
-        on_delete=models.CASCADE,
-    )
+ #   author = models.ForeignKey(
+ #       "auth.User",
+ #       on_delete=models.CASCADE,
+ #   )
     author = models.CharField(max_length=20)
     body = models.TextField()
     liczby = models.TextField()

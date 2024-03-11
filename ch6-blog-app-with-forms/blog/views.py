@@ -30,7 +30,9 @@ def suma(request):
                        
               post.save()
               return redirect('/')
-      return redirect('/')
+      else:
+          form = Suma()
+      return render(request, 'suma.html', {'form': form })
 
 class BlogListView(ListView):
     model = Post

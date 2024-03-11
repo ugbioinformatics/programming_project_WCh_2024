@@ -2,10 +2,7 @@
 
 {% block content %}
 
-<form action="post/suma/" method="post">
-{% csrf_token %}
-<input class="form-control" name="body" placeholder="podaj liczby">
-
+<a href="{% url 'post_suma' %}">Formularz</a>
 
 {% for post in post_list %}
   <div class="post-entry">

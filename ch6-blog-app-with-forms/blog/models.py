@@ -13,6 +13,7 @@ class Post(models.Model):
     liczby = models.TextField()
     suma = models.IntegerField()
     URL = models.URLField()
+    decimal = models.DecimalField()
     def __str__(self):
         return self.title
 

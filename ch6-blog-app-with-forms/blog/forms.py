@@ -8,3 +8,4 @@ class Suma(forms.Form):
     URL = forms.URLField()
     bool = forms.BooleanField()
     time = forms.TimeField()
+    decimal = forms.DecimalField(max_digits = 5, decimal_places = 3)

@@ -5,7 +5,7 @@ from .views import (
     BlogCreateView,
     BlogUpdateView,
     BlogDeleteView, 
-#    suma_old, # new
+    suma,
 )
 
 urlpatterns = [

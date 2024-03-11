@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+<form action="post/suma/" method="post">
+{% csrf_token %}
+<input class="form-control" name="body" placeholder="podaj liczby">
+
 {% block content %}
   {% for post in post_list %}
   <div class="post-entry">

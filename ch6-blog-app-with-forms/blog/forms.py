@@ -7,3 +7,4 @@ class Suma(forms.Form):
     data1 = forms.DateField(initial=datetime.date.today,label="Podaj datę",help_text="data obliczeń")
     URL = forms.URLField()
     bool = forms.BooleanField()
+    time = forms.TimeField()

@@ -9,19 +9,19 @@ class Suma(forms.Form):
     #URL = forms.URLField()
     #bool = forms.BooleanField()
 
-def clean(self):
-    cleaned_data = super(Suma, self).clean()
-    pole_nazwa = cleaned_data.get('pole_nazwa')
-    pole_smiles = cleaned_data.get('pole_smiles')
-    
-    if pole_nazwa == "" and pole_smiles == "":  #brak nazwy i smiles
-        self.add_error('pole_nazwa','podaj dane')
-    
-    if pole_nazwa != "" and pole_smiles == "":  #brak nazwy
-#        print("Smiles = ", pole_smiles)
-        self.add_error('pole_nazwa','ok1')
-    if pole_nazwa == "" and pole_smiles != "":  #brak smiles
-#        print("Podano nazwę, smiles = ", CIRconvert(pole_nazwa))
-        self.add_error('pole_nazwa','ok2')
-    if pole_nazwa != "" and pole_smiles != "":  #podana nazwa i smiles
-        self.add_error('pole_nazwa','wszystkie pola wypełnione')
+    def clean(self):
+        cleaned_data = super(Suma, self).clean()
+        pole_nazwa = cleaned_data.get("pole_nazwa")
+        pole_smiles = cleaned_data.get("pole_smiles")
+        
+        if pole_nazwa == "" and pole_smiles == "":  #brak nazwy i smiles
+            self.add_error('pole_nazwa','podaj dane')
+        
+        if pole_nazwa != "" and pole_smiles == "":  #brak nazwy
+    #        print("Smiles = ", pole_smiles)
+            self.add_error('pole_nazwa','ok1')
+        if pole_nazwa == "" and pole_smiles != "":  #brak smiles
+    #        print("Podano nazwę, smiles = ", CIRconvert(pole_nazwa))
+            self.add_error('pole_nazwa','ok2')
+        if pole_nazwa != "" and pole_smiles != "":  #podana nazwa i smiles
+            self.add_error('pole_nazwa','wszystkie pola wypełnione')

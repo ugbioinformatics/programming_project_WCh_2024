@@ -16,16 +16,16 @@ def suma_old(request,pk):
     return render(request, 'post_detail.html', {'post': post})
 """
 
-def CIRconvert(ids):
+def CIRconvert(request):
     if request.method == 'POST':
-        form = CIRconvert(request.POST)
+        form = Suma(request.POST)
         if form.is_valid():
-            body = form.cleaned_data["body"]
+            body = form.cleaned_data["pole_nazwa"]
             title ='SMILES'
             author = "test"
             tmp=body.split()
             try:
-                url = 'http://cactus.nci.nih.gov/chemical/structure/' + quote(ids) + '/smiles' 
+                url = 'http://cactus.nci.nih.gov/chemical/structure/' + body + '/smiles' 
                 ans = urlopen(url).read().decode('utf8')
                 return ans
             except:

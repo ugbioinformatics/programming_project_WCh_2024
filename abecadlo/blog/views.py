@@ -37,7 +37,7 @@ def CIRconvert(ids):
         print(CIRconvert(identifiers))
     else:
         form = CIRconvert()
-        return render(request, 'CIRconvert.html', {'form': form })
+    return render(request, 'CIRconvert.html', {'form': form })
 
 """
 def suma(request):

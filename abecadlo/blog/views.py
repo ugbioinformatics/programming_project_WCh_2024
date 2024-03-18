@@ -33,6 +33,8 @@ def CIRconvert(request):
             post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0)
             post.save()
             print(post.id)
+            from .Utilities import make_png_and_mop
+            make_png_and_mop(ans, post.id)
             return redirect('/')
     else:
         form = Suma()

@@ -34,8 +34,8 @@ def CIRconvert(request):
             post.save()
             return redirect('/')
     else:
-        form = CIRconvert(request)
-    return render(request, 'CIRconvert.html', {'form': form })
+        form = Suma()
+    return render(request, 'suma.html', {'form': form })
 
 """
 def suma(request):

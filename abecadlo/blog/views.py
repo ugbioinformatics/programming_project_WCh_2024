@@ -21,6 +21,7 @@ def CIRconvert(request):
     if request.method == 'POST':
         form = Suma(request.POST)
         if form.is_valid():
+            print('if is valid')
             body = form.cleaned_data["pole_nazwa"]
             title ='SMILES'
             author = "test"

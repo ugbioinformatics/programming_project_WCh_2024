@@ -18,7 +18,7 @@ def suma_old(request,pk):
 
 def CIRconvert(ids):
     if request.method == 'POST':
-          form = CIRconvert(request.POST)
+        form = CIRconvert(request.POST)
         if form.is_valid():
             body = form.cleaned_data["body"]
             title ='SMILES'
@@ -39,7 +39,7 @@ def CIRconvert(ids):
           form = CIRconvert()
       return render(request, 'CIRconvert.html', {'form': form })
 
-
+"""
 def suma(request):
       if request.method == 'POST':
           form = Suma(request.POST)
@@ -58,7 +58,7 @@ def suma(request):
       else:
           form = Suma()
       return render(request, 'suma.html', {'form': form })
-
+"""
 
 class BlogListView(ListView):
     model = Post

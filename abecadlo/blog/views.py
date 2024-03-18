@@ -15,12 +15,37 @@ def suma_old(request,pk):
     post.save()
     return render(request, 'post_detail.html', {'post': post})
 """
+
+def CIRconvert(ids):
+    if request.method == 'POST':
+          form = CIRconvert(request.POST)
+        if form.is_valid():
+            body = form.cleaned_data["body"]
+            title ='SMILES'
+            author = "test"
+            tmp=body.split()
+            try:
+                url = 'http://cactus.nci.nih.gov/chemical/structure/' + quote(ids) + '/smiles' 
+                ans = urlopen(url).read().decode('utf8')
+                return ans
+            except:
+                return 'Did not work'
+            post = Post(body=body, title=title, author=author,suma=suma)
+            post.save()
+            return redirect('/')
+        identifiers = input()
+        print(CIRconvert(identifiers))
+    else:
+          form = CIRconvert()
+      return render(request, 'CIRconvert.html', {'form': form })
+
+
 def suma(request):
       if request.method == 'POST':
           form = Suma(request.POST)
           if form.is_valid():
               body = form.cleaned_data["body"]
-              title ='Suma'
+              title ='SMILES'
               author = "test"
               tmp=body.split()
               for i in range(0, len(tmp)):
@@ -33,6 +58,7 @@ def suma(request):
       else:
           form = Suma()
       return render(request, 'suma.html', {'form': form })
+
 
 class BlogListView(ListView):
     model = Post

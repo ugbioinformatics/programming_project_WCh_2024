@@ -33,10 +33,8 @@ def CIRconvert(request):
             post = Post(body=body, title=title, author=author,suma=suma)
             post.save()
             return redirect('/')
-        identifiers = input()
-        print(CIRconvert(identifiers))
     else:
-        form = CIRconvert()
+        form = CIRconvert(request)
     return render(request, 'CIRconvert.html', {'form': form })
 
 """

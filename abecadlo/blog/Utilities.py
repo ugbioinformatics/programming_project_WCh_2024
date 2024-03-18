@@ -1,5 +1,6 @@
 def make_png_and_mop(smiles, id):
     import openbabel.pybel
+    import os
     czasteczka = openbabel.pybel.readstring("smi", smiles)
     os.mkdir(str(id))
     czasteczka.write(format="_png2",filename=str(id)+"/molecule.png", overwrite=True)

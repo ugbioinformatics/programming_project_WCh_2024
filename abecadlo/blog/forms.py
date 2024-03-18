@@ -18,10 +18,10 @@ class Suma(forms.Form):
             self.add_error('pole_nazwa','podaj dane')
         
         if pole_nazwa != "" and pole_smiles == "":  #brak nazwy
-    #        print("Smiles = ", pole_smiles)
+
             self.add_error('pole_nazwa','ok1')
         if pole_nazwa == "" and pole_smiles != "":  #brak smiles
-    #        print("Podano nazwę, smiles = ", CIRconvert(pole_nazwa))
+
             self.add_error('pole_nazwa','ok2')
         if pole_nazwa != "" and pole_smiles != "":  #podana nazwa i smiles
             self.add_error('pole_nazwa','wszystkie pola wypełnione')

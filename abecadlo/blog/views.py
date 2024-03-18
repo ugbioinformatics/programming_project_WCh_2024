@@ -17,6 +17,7 @@ def suma_old(request,pk):
 """
 
 def CIRconvert(request):
+    print('views')
     if request.method == 'POST':
         form = Suma(request.POST)
         if form.is_valid():

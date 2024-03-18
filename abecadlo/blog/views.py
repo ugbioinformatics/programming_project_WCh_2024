@@ -25,13 +25,9 @@ def CIRconvert(request):
             body = form.cleaned_data["pole_nazwa"]
             title ='SMILES'
             author = "test"
-            tmp=body.split()
-            try:
-                url = 'http://cactus.nci.nih.gov/chemical/structure/' + body + '/smiles' 
-                ans = urlopen(url).read().decode('utf8')
-                return ans
-            except:
-                return 'Did not work'
+            url = 'http://cactus.nci.nih.gov/chemical/structure/' + body + '/smiles'
+            print('url')
+            ans = urlopen(url).read().decode('utf8')
             post = Post(body=body, title=title, author=author,suma=suma)
             post.save()
             return redirect('/')

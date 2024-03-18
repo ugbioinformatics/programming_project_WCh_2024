@@ -1,7 +1,7 @@
 from django import forms
 from .models import Post
 import datetime
-from Utilities import CIRconvert
+from .Utilities import CIRconvert
 
 class Suma(forms.Form):
     pole_nazwa = forms.CharField(required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':40}))

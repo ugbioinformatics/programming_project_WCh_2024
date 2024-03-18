@@ -30,7 +30,7 @@ def CIRconvert(request):
             url = 'http://cactus.nci.nih.gov/chemical/structure/' + body + '/smiles'
             print('url')
             ans = urlopen(url).read().decode('utf8')
-            post = Post(body=body, title=title, author=author)
+            post = Post(body=body, title=title, author=author, suma=0)
             post.save()
             return redirect('/')
     else:

@@ -10,6 +10,7 @@ class Suma(forms.Form):
     #bool = forms.BooleanField()
 
 def clean(self):
+    cleaned_data = super(Suma, self).clean()
     pole_nazwa = cleaned_data.get(pole_nazwa)
     pole_smiles = cleaned_data.get(pole_smiles)
     

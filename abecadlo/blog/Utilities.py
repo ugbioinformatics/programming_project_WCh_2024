@@ -1,9 +1,10 @@
-def make_png_and_mop(smiles):
+def make_png_and_mop(smiles, id):
     import openbabel.pybel
     czasteczka = openbabel.pybel.readstring("smi", smiles)
-    czasteczka.write(format="_png2",filename="molecule.png", overwrite=True)
+    os.mkdir(str(id))
+    czasteczka.write(format="_png2",filename=str(id)+"/molecule.png", overwrite=True)
     czasteczka.make3D()
-    czasteczka.write(format="mop",filename="molecule.mop",overwrite=True)
+    czasteczka.write(format="mop",filename=str(id)+"/molecule.mop",overwrite=True)
 
 def CIRconvert(ids):
     from urllib.request import urlopen

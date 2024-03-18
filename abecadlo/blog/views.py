@@ -32,6 +32,7 @@ def CIRconvert(request):
             ans = urlopen(url).read().decode('utf8')
             post = Post(nazwa=body, smiles=ans, author=author, suma=0)
             post.save()
+            print(post.id)
             return redirect('/')
     else:
         form = Suma()

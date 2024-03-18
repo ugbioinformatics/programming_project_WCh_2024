@@ -22,6 +22,7 @@ class Suma(forms.Form):
             if CIRconvert(pole_nazwa)=='Did not work':
                 self.add_error('pole_nazwa','smiles nie istnieje')
             else:
+                print('Przeszlo')
                 pass
         if pole_nazwa == "" and pole_smiles != "":  #brak nazwy
             make_png_and_mop(pole_smiles)

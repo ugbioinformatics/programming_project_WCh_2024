@@ -9,9 +9,11 @@ class Post(models.Model):
  #       on_delete=models.CASCADE,
  #   )
     author = models.CharField(max_length=20)
-    body = models.TextField()
-    liczby = models.TextField()
-    suma = models.IntegerField()
+    nazwa = models.TextField()
+    smiles = models.TextField()
+    cieplo = models.FloatField()
+    energia = models.FloatField()
+    
 
     def __str__(self):
         return self.title

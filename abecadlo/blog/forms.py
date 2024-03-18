@@ -17,11 +17,12 @@ class Suma(forms.Form):
         if pole_nazwa == "" and pole_smiles == "":  #brak nazwy i smiles
             self.add_error('pole_nazwa','podaj dane')
         
-        if pole_nazwa != "" and pole_smiles == "":  #brak nazwy
-
-            self.add_error('pole_nazwa','ok1')
-        if pole_nazwa == "" and pole_smiles != "":  #brak smiles
-
-            self.add_error('pole_nazwa','ok2')
+        if pole_nazwa != "" and pole_smiles == "":  #brak smiles
+            if CIRconvert('pole_nazwa')=='Did not work':
+                self.add_error('pole_nazwa','smiles nie istnieje')
+            else:
+                pass
+        if pole_nazwa == "" and pole_smiles != "":  #brak nazwy
+            make_png_and_mop('pole_smiles')
         if pole_nazwa != "" and pole_smiles != "":  #podana nazwa i smiles
             self.add_error('pole_nazwa','wszystkie pola wypełnione')

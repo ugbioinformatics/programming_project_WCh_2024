@@ -19,11 +19,11 @@ class Suma(forms.Form):
             self.add_error('pole_nazwa','podaj dane')
         
         if pole_nazwa != "" and pole_smiles == "":  #brak smiles
-            if CIRconvert('pole_nazwa')=='Did not work':
+            if CIRconvert(pole_nazwa)=='Did not work':
                 self.add_error('pole_nazwa','smiles nie istnieje')
             else:
                 pass
         if pole_nazwa == "" and pole_smiles != "":  #brak nazwy
-            make_png_and_mop('pole_smiles')
+            make_png_and_mop(pole_smiles)
         if pole_nazwa != "" and pole_smiles != "":  #podana nazwa i smiles
             self.add_error('pole_nazwa','wszystkie pola wypełnione')

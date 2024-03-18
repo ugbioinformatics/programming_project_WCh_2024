@@ -10,6 +10,7 @@ def CIRconvert(ids):
     from urllib.parse import quote
     try:
         url = 'http://cactus.nci.nih.gov/chemical/structure/' + quote(ids) + '/smiles' 
+        print(url)
         return urlopen(url).read().decode('utf8')
     except:
         return 'Did not work'

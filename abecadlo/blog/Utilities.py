@@ -6,13 +6,10 @@ def make_png_and_mop(smiles):
     czasteczka.write(format="mop",filename="molecule.mop",overwrite=True)
 
 def CIRconvert(ids):
-  from urllib.request import urlopen
-  from urllib.parse import quote
-  try:
-        url = 'http://cactus.nci.nih.gov/chemical/structure/' + quote(ids) + '/smiles'
-    
-        ans = urlopen(url).read().decode('utf8')
-        for line in ans:
-            return ans
+    from urllib.request import urlopen
+    from urllib.parse import quote
+    try:
+        url = 'http://cactus.nci.nih.gov/chemical/structure/' + quote(ids) + '/smiles' 
+        return urlopen(url).read().decode('utf8')
     except:
         return 'Did not work'

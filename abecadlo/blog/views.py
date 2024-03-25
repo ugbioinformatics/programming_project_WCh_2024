@@ -16,7 +16,7 @@ def suma_old(request,pk):
     return render(request, 'post_detail.html', {'post': post})
 """
 
-def CIRconvert(request):
+def CIRconvert_Views(request):
     print('views')
     if request.method == 'POST':
         form = Suma(request.POST)

@@ -19,9 +19,9 @@ def metoda(id):
     from django.conf import settings
     with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mop", 'r+') as f:
         nazwa = f.writelines()
-    for i in nazwa:
-        if 'PUT KEYWORDS HERE' == i:
-            i = 'Cieplo'
+        for i in nazwa:
+            if 'PUT KEYWORDS HERE' == i:
+                i = 'Cieplo'
     return
     
 def CIRconvert_Views(request):

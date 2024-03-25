@@ -44,8 +44,7 @@ def CIRconvert_Views(request):
                 print(post.id)
                 from .Utilities import make_png_and_mop
                 make_png_and_mop(ans, post.id)
-                metoda(post.id)
-                return redirect('/')
+                
             else:
                 title ='SMILES'
                 author = "test"
@@ -54,7 +53,9 @@ def CIRconvert_Views(request):
                 print(post.id)
                 from .Utilities import make_png_and_mop
                 make_png_and_mop(form.cleaned_data["pole_smiles"], post.id)
-                return redirect('/')
+            metoda(post.id)
+            
+            return redirect('/')
     else:
         form = Suma()
     return render(request, 'suma.html', {'form': form })

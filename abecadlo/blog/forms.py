@@ -27,7 +27,7 @@ class Suma(forms.Form):
                 pass
         if pole_nazwa == "" and pole_smiles != "":  #brak nazwy
             if smile_check(pole_smiles)=='it dont work':
-                self.add_error('pole_smiles,'smiles nie istnieje')
+                self.add_error('pole_smiles','smiles nie istnieje')
             else:
                 print('Przeszlo')
                 pass

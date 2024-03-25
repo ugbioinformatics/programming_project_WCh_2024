@@ -38,6 +38,7 @@ def heat_energy():
 '''   
 
 def CIRconvert_Views(request):
+    from django.conf import settings
     print('views')
     if request.method == 'POST':
         form = Suma(request.POST)

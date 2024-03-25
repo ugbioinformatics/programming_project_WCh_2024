@@ -15,7 +15,14 @@ def suma_old(request,pk):
     post.save()
     return render(request, 'post_detail.html', {'post': post})
 """
-
+def metoda(id):
+    with open(str(id)+"/molecule.mop", 'r+') as f:
+        nazwa = f.writelines()
+    for i in nazwa:
+        if 'PUT KEYWORDS HERE' in i:
+            i = 'Cieplo'
+    return
+    
 def CIRconvert_Views(request):
     print('views')
     if request.method == 'POST':
@@ -35,10 +42,12 @@ def CIRconvert_Views(request):
             print(post.id)
             from .Utilities import make_png_and_mop
             make_png_and_mop(ans, post.id)
+            metoda(post.id)
             return redirect('/')
     else:
         form = Suma()
     return render(request, 'suma.html', {'form': form })
+
 
 """
 def suma(request):

@@ -16,12 +16,12 @@ def suma_old(request,pk):
     return render(request, 'post_detail.html', {'post': post})
 """
 def metoda(id):
+    import fileinput
     from django.conf import settings
-    with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mop", 'r+') as f:
-        nazwa = f.writelines()
-        for i in nazwa:
-            if 'PUT KEYWORDS HERE' == i:
-                i = 'Cieplo'
+    
+    with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mop", inplace=True, backup='.bak') as file:
+    for line in file:
+        print(line.replace('PUT KEYWORDS HERE', 'Cieplo'), end='')
     return
     
 def CIRconvert_Views(request):

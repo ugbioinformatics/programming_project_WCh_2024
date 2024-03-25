@@ -26,16 +26,14 @@ def metoda(id):
     
 def heat_energy(id):
     from django.conf import settings
-
-    heat = ''
-    energy = ''
     with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out", 'r') as file:
         nazwa = file.readlines()
     for line in nazwa:
         if line.startswith('          FINAL HEAT OF FORMATION ='):
-            heat = line
+            heat = float(line.split()[-2])
         if line.startswith('          TOTAL ENERGY            ='):
-            energy = line
+            energy = float(line.split()[-2])
+            
     return heat, energy
 
 

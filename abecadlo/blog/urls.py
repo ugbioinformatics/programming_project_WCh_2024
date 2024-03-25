@@ -5,7 +5,7 @@ from .views import (
     BlogCreateView,
     BlogUpdateView,
     BlogDeleteView, 
-    CIRconvert,
+    CIRconvert_Views,
 )
 
 urlpatterns = [

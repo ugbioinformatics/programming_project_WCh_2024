@@ -31,6 +31,5 @@ class Suma(forms.Form):
             else:
                 print('Przeszlo')
                 pass
-            
         if pole_nazwa != "" and pole_smiles != "":  #podana nazwa i smiles
             self.add_error('pole_nazwa','wszystkie pola wypełnione')

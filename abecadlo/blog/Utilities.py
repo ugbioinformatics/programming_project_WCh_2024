@@ -7,6 +7,15 @@ def make_png_and_mop(smiles, id):
     czasteczka.make3D()
     czasteczka.write(format="mop",filename=str(id)+"/molecule.mop",overwrite=True)
 
+def smile_check(smiles, id):
+    import openbabel.pybel
+    import os
+    try:
+        czasteczka = openbabel.pybel.readstring("smi", smiles)
+        return 'it work'
+    except:
+        return 'it dont work'
+
 def CIRconvert(ids):
     from urllib.request import urlopen
     from urllib.parse import quote

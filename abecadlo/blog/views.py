@@ -20,8 +20,8 @@ def metoda(id):
     from django.conf import settings
     
     with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mop", inplace=True, backup='.bak') as file:
-    for line in file:
-        print(line.replace('PUT KEYWORDS HERE', 'Cieplo'), end='')
+        for line in file:
+            print(line.replace('PUT KEYWORDS HERE', 'Cieplo'), end='')
     return
     
 def CIRconvert_Views(request):

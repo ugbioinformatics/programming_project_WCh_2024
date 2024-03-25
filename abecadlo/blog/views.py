@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView  # new
 from django.urls import reverse_lazy  # new
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import Suma
-
+import subprocess
 from .models import Post
 """
 def suma_old(request,pk):

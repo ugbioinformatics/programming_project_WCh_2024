@@ -1,7 +1,8 @@
 from django import forms
 from .models import Post
 import datetime
-from .Utilities import CIRconvert
+from .Utilities import CIRconvert, smile_check
+
 
 class Suma(forms.Form):
     pole_nazwa = forms.CharField(required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':400}))
@@ -25,6 +26,11 @@ class Suma(forms.Form):
                 print('Przeszlo')
                 pass
         if pole_nazwa == "" and pole_smiles != "":  #brak nazwy
-            make_png_and_mop(pole_smiles)
+            if smile_check(pole_smiles)=='it dont work':
+                self.add_error('pole_smiles,'smiles nie istnieje')
+            else:
+                print('Przeszlo')
+                pass
+            
         if pole_nazwa != "" and pole_smiles != "":  #podana nazwa i smiles
             self.add_error('pole_nazwa','wszystkie pola wypełnione')

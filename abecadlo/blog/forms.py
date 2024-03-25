@@ -4,8 +4,8 @@ import datetime
 from .Utilities import CIRconvert
 
 class Suma(forms.Form):
-    pole_nazwa = forms.CharField(required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':40}))
-    pole_smiles = forms.CharField(required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':40}))
+    pole_nazwa = forms.CharField(required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':400}))
+    pole_smiles = forms.CharField(required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':400}))
     #data1 = forms.DateField(initial=datetime.date.today,label="Podaj datę",help_text="data obliczeń")
     #URL = forms.URLField()
     #bool = forms.BooleanField()

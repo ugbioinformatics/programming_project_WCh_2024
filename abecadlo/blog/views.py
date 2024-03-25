@@ -25,6 +25,8 @@ def metoda(id):
     return
     
 def heat_energy(id):
+    from django.conf import settings
+
     heat = ''
     energy = ''
     with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out", 'r') as file:

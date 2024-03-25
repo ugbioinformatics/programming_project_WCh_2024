@@ -68,7 +68,7 @@ def CIRconvert_Views(request):
                 from .Utilities import make_png_and_mop
                 make_png_and_mop(form.cleaned_data["pole_smiles"], post.id)
             metoda(post.id)
-            subprocess.run(['/opt/mopac/MOPAC2016.exe molecule.mop'], cwd = settings.MEDIA_ROOT+'/'+post.id)
+            subprocess.run(['/opt/mopac/MOPAC2016.exe molecule.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
             return redirect('/')
     else:
         form = Suma()

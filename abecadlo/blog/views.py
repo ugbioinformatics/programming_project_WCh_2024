@@ -23,7 +23,20 @@ def metoda(id):
         for line in file:
             print(line.replace('PUT KEYWORDS HERE', 'AM1'), end='')
     return
-    
+'''    
+def heat_energy():
+    heat = ''
+    energy = ''
+    with open(filename, 'r') as file:
+        nazwa = file.readlines()
+    for line in nazwa:
+        if line.startswith('          FINAL HEAT OF FORMATION ='):
+            heat = line
+        if line.startswith('          TOTAL ENERGY            ='):
+            energy = line
+    return heat, energy
+'''   
+
 def CIRconvert_Views(request):
     print('views')
     if request.method == 'POST':

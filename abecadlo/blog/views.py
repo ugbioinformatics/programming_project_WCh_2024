@@ -19,7 +19,7 @@ def metoda(id):
     with open(str(id)+"/molecule.mop", 'r+') as f:
         nazwa = f.writelines()
     for i in nazwa:
-        if 'PUT KEYWORDS HERE' in i:
+        if 'PUT KEYWORDS HERE' == i:
             i = 'Cieplo'
     return
     

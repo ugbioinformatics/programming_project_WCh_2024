@@ -16,7 +16,8 @@ def suma_old(request,pk):
     return render(request, 'post_detail.html', {'post': post})
 """
 def metoda(id):
-    with open(str(id)+"/molecule.mop", 'r+') as f:
+    from django.conf import settings
+    with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mop", 'r+') as f:
         nazwa = f.writelines()
     for i in nazwa:
         if 'PUT KEYWORDS HERE' == i:

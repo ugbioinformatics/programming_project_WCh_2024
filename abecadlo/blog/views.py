@@ -29,7 +29,39 @@ def CIRconvert_Views(request):
         form = Suma(request.POST)
         if form.is_valid():
             from urllib.request import urlopen
+            from urllib.parse import quotedef CIRconvert(request):
+    print('views')
+    if request.method == 'POST':
+        form = Suma(request.POST)
+        if form.is_valid():
+            from urllib.request import urlopen
             from urllib.parse import quote
+            print('if is valid')
+            body = form.cleaned_data["pole_nazwa"]
+            if body != "":
+                title ='SMILES'
+                author = "test"
+                url = 'http://cactus.nci.nih.gov/chemical/structure/' + body + '/smiles'
+                print('url')
+                ans = urlopen(url).read().decode('utf8')
+                post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0)
+                post.save()
+                print(post.id)
+                from .Utilities import make_png_and_mop
+                make_png_and_mop(ans, post.id)
+                return redirect('/')
+            else:
+                title ='SMILES'
+                author = "test"
+                post = Post(nazwa='jsd', smiles='pole_smiles', author=author, cieplo=0, energia=0)
+                post.save()
+                print(post.id)
+                from .Utilities import make_png_and_mop
+                make_png_and_mop(form.cleaned_data["pole_smiles"], post.id)
+                return redirect('/')
+    else:
+        form = Suma()
+    return render(request, 'suma.html', {'form': form })
             print('if is valid')
             body = form.cleaned_data["pole_nazwa"]
             title ='SMILES'

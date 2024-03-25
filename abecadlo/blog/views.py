@@ -23,11 +23,11 @@ def metoda(id):
         for line in file:
             print(line.replace('PUT KEYWORDS HERE', 'AM1'), end='')
     return
-'''    
-def heat_energy():
+    
+def heat_energy(id):
     heat = ''
     energy = ''
-    with open(filename, 'r') as file:
+    with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out", 'r') as file:
         nazwa = file.readlines()
     for line in nazwa:
         if line.startswith('          FINAL HEAT OF FORMATION ='):
@@ -35,7 +35,7 @@ def heat_energy():
         if line.startswith('          TOTAL ENERGY            ='):
             energy = line
     return heat, energy
-'''   
+
 
 def CIRconvert_Views(request):
     from django.conf import settings
@@ -69,6 +69,8 @@ def CIRconvert_Views(request):
                 make_png_and_mop(form.cleaned_data["pole_smiles"], post.id)
             metoda(post.id)
             subprocess.run(['/opt/mopac/MOPAC2016.exe', 'molecule.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
+            post.cieplo, post.energia = heat_energy(post.id)
+            post.save()
             return redirect('/')
     else:
         form = Suma()

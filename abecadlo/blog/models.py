@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey(User,on_delete=models.CASCADE,blank = True,null = True)
-    author = models.CharField(max_length=20)
+#    author = models.CharField(max_length=20)
     nazwa = models.TextField()
     smiles = models.TextField()
     cieplo = models.FloatField()

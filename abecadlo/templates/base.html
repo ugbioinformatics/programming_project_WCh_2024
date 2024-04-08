@@ -16,7 +16,10 @@
         <div class="nav-right">
        
           {% if user.is_authenticated %}
-           Hi {{ user.username }}! <a href="{% url 'logout' %}">Log Out </a>
+           Hi {{ user.username }}! <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Log Out</button>
+          </form>
           {% else %}
           You are not logged in.  <a href="{% url 'login' %}">Log In </a>
           {% endif %}

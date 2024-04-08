@@ -103,8 +103,13 @@ def suma(request):
 class BlogListView(ListView):
     model = Post
     template_name = "home.html"
-
-
+    def get_queryset(self, **kwargs):
+        qs = super().get_queryset(**kwargs)
+        if self.request.user.is_authenticated:
+            return qs.filter(author=self.request.user)
+        else:
+            return qs.filter(author=None)
+        
 class BlogDetailView(DetailView):
     model = Post
     template_name = "post_detail.html"

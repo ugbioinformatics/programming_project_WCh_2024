@@ -2,8 +2,6 @@
 
 {% block content %}
 
-<h1><a href="{% url 'post_suma' %}">Add New Molecule</a></h1>
-
 {% for post in post_list %}
   <div class="post-entry">
     <h2><a href="{% url 'post_detail' post.pk %}">{{ post.nazwa }}</a></h2>

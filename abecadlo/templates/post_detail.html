@@ -4,8 +4,8 @@
 <div class="post-entry">
   <h2>{{ post.nazwa }}</h2>
   <p>{{ post.smiles }}</p>
-  <p>{{ post.cieplo }}</p>  
-  <p>{{ post.energia }}</p>  
+  <p>'Heat of Formation:' {{ post.cieplo }} 'KJ/MOL'</p>  
+  <p>'Total Energy:' {{ post.energia }} 'EV' </p>  
 </div>
 
 <img src="/media/{{post.id}}/molecule.png">

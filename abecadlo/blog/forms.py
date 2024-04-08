@@ -5,8 +5,8 @@ from .Utilities import CIRconvert, smile_check
 
 
 class Suma(forms.Form):
-    pole_nazwa = forms.CharField(required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':400}))
-    pole_smiles = forms.CharField(required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':400}))
+    pole_nazwa = forms.CharField(label='Molecule name', required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':400}))
+    pole_smiles = forms.CharField(label='SMILES', required = False,widget=forms.TextInput(attrs={'size':40, 'maxlength':400}))
     #data1 = forms.DateField(initial=datetime.date.today,label="Podaj datę",help_text="data obliczeń")
     #URL = forms.URLField()
     #bool = forms.BooleanField()

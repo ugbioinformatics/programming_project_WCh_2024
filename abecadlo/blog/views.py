@@ -62,11 +62,12 @@ def CIRconvert_Views(request):
             else:
                 title ='SMILES'
                 author = "test"
+                pole_smiles = form.cleaned_data["pole_smiles"]
                 post = Post(nazwa = pole_smiles, smiles = pole_smiles, author=author, cieplo=0, energia=0)
                 post.save()
                 print(post.id)
                 from .Utilities import make_png_and_mop
-                make_png_and_mop(form.cleaned_data["pole_smiles"], post.id)
+                make_png_and_mop(pole_smiles, post.id)
             metoda(post.id)
             subprocess.run(['/opt/mopac/MOPAC2016.exe', 'molecule.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
             post.cieplo, post.energia = heat_energy(post.id)

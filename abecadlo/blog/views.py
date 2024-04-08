@@ -62,7 +62,7 @@ def CIRconvert_Views(request):
             else:
                 title ='SMILES'
                 author = "test"
-                post = Post(nazwa='jsd', smiles='pole_smiles', author=author, cieplo=0, energia=0)
+                post = Post(nazwa = pole_smiles, smiles = pole_smiles, author=author, cieplo=0, energia=0)
                 post.save()
                 print(post.id)
                 from .Utilities import make_png_and_mop

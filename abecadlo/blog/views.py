@@ -53,7 +53,10 @@ def CIRconvert_Views(request):
                 url = 'http://cactus.nci.nih.gov/chemical/structure/' + body + '/smiles'
                 print('url')
                 ans = urlopen(url).read().decode('utf8')
-                post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0)
+                if request.user.is_authenticated:
+                    post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0, author = request.user)
+                else:
+                    post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0)
                 post.save()
                 print(post.id)
                 from .Utilities import make_png_and_mop
@@ -63,7 +66,10 @@ def CIRconvert_Views(request):
                 title ='SMILES'
                 author = "test"
                 pole_smiles = form.cleaned_data["pole_smiles"]
-                post = Post(nazwa = pole_smiles, smiles = pole_smiles, author=author, cieplo=0, energia=0)
+                if request.user.is_authenticated:
+                    post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0, author = request.user)
+                else:
+                    post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0))
                 post.save()
                 print(post.id)
                 from .Utilities import make_png_and_mop

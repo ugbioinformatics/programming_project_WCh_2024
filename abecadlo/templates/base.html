@@ -12,8 +12,16 @@
         <div class="nav-left">
           <h1><a href="{% url 'home' %}">Molecule Calculator</a></h1>
         </div>
-        <div class="nav-right">
+          <div class="nav-left">
           <h1><a href="{% url 'post_suma' %}">Add New Molecule</a></h1>
+          </div>
+        <div class="nav-right">
+       
+          {% if user.is_authenticated %}
+           Hi {{ user.username }}! <a href="{% url 'logout' %}">Log Out </a>
+          {% else %}
+          You are not logged in.  <a href="{% url 'login' %}">Log In </a>
+          {% endif %}
         </div>
       </header>
       {% block content %}

@@ -26,6 +26,9 @@ def metoda(id):
     
 def heat_energy(id):
     from django.conf import settings
+    import openbabel.pybel
+    import os
+    
     with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out", 'r') as file:
         nazwa = file.readlines()
     for line in nazwa:
@@ -33,7 +36,12 @@ def heat_energy(id):
             heat = float(line.split()[-2])
         if line.startswith('          TOTAL ENERGY            ='):
             energy = float(line.split()[-2])
-            
+    
+    czasteczka = next(openbabel.pybel.readfile("mopout", settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out"))
+    
+    
+    czasteczka.write(format="mol2",filename=settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mol2",overwrite=True)
+    
     return heat, energy
 
 

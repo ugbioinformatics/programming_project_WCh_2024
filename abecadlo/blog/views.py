@@ -69,7 +69,7 @@ def CIRconvert_Views(request):
                 if request.user.is_authenticated:
                     post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0, author = request.user)
                 else:
-                    post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0))
+                    post = Post(nazwa=body, smiles=ans, author=author, cieplo=0, energia=0)
                 post.save()
                 print(post.id)
                 from .Utilities import make_png_and_mop

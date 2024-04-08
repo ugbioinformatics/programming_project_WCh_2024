@@ -5,14 +5,6 @@ import shutil
 import os
 
 
-@receiver(post_save, sender=Post)
-def write_on_task_save(sender, instance, **kwargs):
-    print("Save to database")
-    print(instance.body)
-    print(instance.plik1)
-    print(instance.plik_hash)
-
-
 @receiver(post_delete, sender=Post)
 def delete_on_post_del(sender, instance, **kwargs):
     try:

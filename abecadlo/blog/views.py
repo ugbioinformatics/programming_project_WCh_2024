@@ -21,7 +21,7 @@ def metoda(id,metoda):
     
     with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mop", inplace=True, backup='.bak') as file:
         for line in file:
-            print(line.replace('PUT KEYWORDS HERE',"AM1", end=''))
+            print(line.replace('PUT KEYWORDS HERE',"AM1"), end='')
     return
     
 def heat_energy(id):

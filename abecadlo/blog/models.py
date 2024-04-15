@@ -10,6 +10,7 @@ class Post(models.Model):
     smiles = models.TextField()
     cieplo = models.FloatField()
     energia = models.FloatField()
+    metoda = models.TextField()
     
 
     def __str__(self):

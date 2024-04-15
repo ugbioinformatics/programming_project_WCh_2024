@@ -15,7 +15,7 @@ def suma_old(request,pk):
     post.save()
     return render(request, 'post_detail.html', {'post': post})
 """
-def metoda(id):
+def metoda(id,metoda):
     import fileinput
     from django.conf import settings
     
@@ -78,7 +78,8 @@ def CIRconvert_Views(request):
                 print(post.id)
                 from .Utilities import make_png_and_mop
                 make_png_and_mop(pole_smiles, post.id)
-            metoda(post.id)
+            pole_metoda = form.cleaned_data["pole_metoda"]
+            metoda(post.id,pole_metoda)
             subprocess.run(['/opt/mopac/MOPAC2016.exe', 'molecule.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
             post.cieplo, post.energia = heat_energy(post.id)
             post.save()

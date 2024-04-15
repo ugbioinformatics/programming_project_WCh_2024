@@ -21,8 +21,8 @@
           <button type="submit">Log Out</button>
           </form>
           {% else %}
-          You are not logged in.  <br><a href="{% url 'login' %}">Log In </a></br>
-          If you don't have an account.  <a href="{% url 'signup' %}">Sign up </a>
+          You are not logged in.  <h1><a href="{% url 'login' %}">Log In </a></h1>
+          If you don't have an account.  <h1><a href="{% url 'signup' %}">Sign up </a></h1>
           {% endif %}
           
         </div>

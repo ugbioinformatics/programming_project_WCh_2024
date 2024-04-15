@@ -22,12 +22,9 @@
           </form>
           {% else %}
           You are not logged in.  <a href="{% url 'login' %}">Log In </a>
-          #If you don't have an account.  <a href="{% url 'signup' %}">Sign up </a>
-          {% endif %}
-          </form>
-        
           If you don't have an account.  <a href="{% url 'signup' %}">Sign up </a>
           {% endif %}
+          
         </div>
       </header>
       {% block content %}

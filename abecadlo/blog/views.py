@@ -28,6 +28,7 @@ def heat_energy(id):
     from django.conf import settings
     import openbabel.pybel
     import os
+    import matplotlib.pyplot as plt
     
     with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out", 'r') as file:
         nazwa = file.readlines()
@@ -41,13 +42,16 @@ def heat_energy(id):
             energy = float(line.split()[-2])
         if line.startswith(' CYCLE:'):
             a = line.split()
-            GRAD.append(a[-1])
-            HEAT.append(a[-3])
-            print(a)
-    print(GRAD)
-    print(HEAT)    
-
-
+            GRAD.append(float(a[-1]))
+            HEAT.append(float(a[-3]))
+#    print(GRAD)
+#    print(HEAT)
+    plt.plot(GRAD)
+    plt.savefig(settings.MEDIA_ROOT+'/'+str(id)+"/nalesnik.png")
+    plt.close()
+    plt.plot(HEAT)
+    plt.savefig(settings.MEDIA_ROOT+'/'+str(id)+"/placek.png")
+    plt.close()
     czasteczka = next(openbabel.pybel.readfile("mopout", settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out"))
     
     

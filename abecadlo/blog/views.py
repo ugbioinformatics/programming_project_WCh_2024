@@ -31,12 +31,23 @@ def heat_energy(id):
     
     with open(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out", 'r') as file:
         nazwa = file.readlines()
+    
+    GRAD = []
+    HEAT = []
     for line in nazwa:
         if line.startswith('          FINAL HEAT OF FORMATION ='):
             heat = float(line.split()[-2])
         if line.startswith('          TOTAL ENERGY            ='):
             energy = float(line.split()[-2])
-    
+        if line.startswith(' CYCLE:'):
+            a = line.split()
+            GRAD.append(a[-1])
+            HEAT.append(a[-3])
+            print(a)
+    print(GRAD)
+    print(HEAT)    
+
+
     czasteczka = next(openbabel.pybel.readfile("mopout", settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out"))
     
     

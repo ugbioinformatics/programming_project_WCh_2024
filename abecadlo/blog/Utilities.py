@@ -7,6 +7,7 @@ def make_png_and_mop(smiles, id):
     czasteczka.write(format="_png2",filename=settings.MEDIA_ROOT+'/'+str(id)+"/molecule.png", overwrite=True)
     czasteczka.make3D()
     czasteczka.write(format="mop",filename=settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mop",overwrite=True)
+    czasteczka.write(format="mol2",filename=settings.MEDIA_ROOT+'/'+str(id)+"/start.mol2",overwrite=True)
 
 def smile_check(smiles):
     import openbabel.pybel

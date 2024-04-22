@@ -14,10 +14,20 @@
   <script src="https://unpkg.com/ngl@1.0.0-beta.7"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      var stage = new NGL.Stage("viewport_start");
+      stage.loadFile("/media/{{post.id}}/start.mol2", {defaultRepresentation: true});
+    });
+  </script> 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
       var stage = new NGL.Stage("viewport");
       stage.loadFile("/media/{{post.id}}/molecule.mol2", {defaultRepresentation: true});
     });
+  
   </script>
+  <p>Start.mol2</p> 
+  <div id="viewport_start" style="width:400px; height:300px;"></div>
+  <p>Molecule.mol2</p>
   <div id="viewport" style="width:400px; height:300px;"></div>
 <p><a href="{% url 'post_delete' post.pk %}">+ Delete Molecule</a></p>
 {% endblock content %}

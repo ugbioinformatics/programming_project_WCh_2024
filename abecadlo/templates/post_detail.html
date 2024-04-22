@@ -20,6 +20,13 @@
   </script> 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      var stage = new NGL.Stage("viewport_start");
+      stage.loadFile("/media/{{post.id}}/nalesnik_i_placek.mo12", {defaultRepresentation: true});
+      });
+  
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
       var stage = new NGL.Stage("viewport");
       stage.loadFile("/media/{{post.id}}/molecule.mol2", {defaultRepresentation: true});
     });

@@ -11,6 +11,8 @@ class Post(models.Model):
     cieplo = models.FloatField()
     energia = models.FloatField()
     metoda = models.TextField()
+    calculated = models.BooleanField(default = False)
+    calculations = models.TextField()
     
 
     def __str__(self):

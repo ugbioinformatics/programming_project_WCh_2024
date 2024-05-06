@@ -126,6 +126,14 @@ def suma(request):
       return render(request, 'suma.html', {'form': form })
 """
 
+def Calculate(request,pk):
+    from .Utilities import calculate
+    post = get_object_or_404(Post, pk=pk)
+    calculate(post, pk)
+    post.calculated = True
+    post.save()
+    return render(request, 'post_detail.html', {'post': post})
+
 class BlogListView(ListView):
     model = Post
     template_name = "home.html"

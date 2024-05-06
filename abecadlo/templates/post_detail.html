@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="post-entry">
   <h2>{{ post.nazwa }}</h2>
   <p>{{ post.smiles }}</p>
@@ -8,6 +9,18 @@
   <p>Total Energy: {{ post.energia }} EV </p>  
   <p>Method Used: {{ post.metoda }} </p>  
 </div>
+
+
+
+{% if post.calculated %}
+           
+  <p align = "right">{{ post.calculations }}</p>
+          
+{% endif %}
+
+
+
+
 
 <img src="/media/{{post.id}}/molecule.png">
 <p>
@@ -31,5 +44,7 @@
 <img src="/media/{{post.id}}/placek.png">
   <p>Molecule.mol2</p>
   <div id="viewport" style="width:400px; height:300px;"></div>
+<p><a href="{% url 'post_calculate' post.pk %}">+ Calculate Molecule</a></p>
+<p><a href="{% url 'post_delete' post.pk %}">+ Show Molecule</a></p>
 <p><a href="{% url 'post_delete' post.pk %}">+ Delete Molecule</a></p>
 {% endblock content %}

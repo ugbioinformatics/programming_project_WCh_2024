@@ -34,6 +34,8 @@ def calculate(post, id):
     from django.conf import settings
     import fileinput
     import subprocess
+    import re
+
 
     czasteczka = next(openbabel.pybel.readfile("mopout",settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out"))
     czasteczka.write(format="mop",filename=settings.MEDIA_ROOT+'/'+str(id)+"/force.mop",overwrite=True)
@@ -44,10 +46,46 @@ def calculate(post, id):
             print(line.replace('PUT KEYWORDS HERE',f"{metoda} force"), end='')
     subprocess.run(['/opt/mopac/MOPAC2016.exe', 'force.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
     
+
+
+
     with open(settings.MEDIA_ROOT+'/'+str(id)+"/force.out", 'r') as file:
         nazwa = file.readlines()
-        post.calculations = nazwa
+#        post.calculations = nazwa
         post.save()
+
+        out = ""
+        index = 0
+        out_count = 0
+        for line in nazwa:
+#            if line == "          DESCRIPTION OF VIBRATIONS\n":
+#                print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            if "VIBRATION" in line:
+                if line == "          DESCRIPTION OF VIBRATIONS\n":
+#                    print("CCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDddd")
+                    continue
+#                print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
+                for i in range(8):
+                    out = out + nazwa[index + i]
+#                print(out)
+                out_count = out_count + 1
+
+#            if line == "           FORCE CONSTANT IN CARTESIAN COORDINATES (Millidynes/A)\n":
+#                print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+#            print(line)
+            index = index + 1
+#        print(out_count)
+#        post.calculations = out
+        post.vibration_count = float(out_count)
+
+        out = out.replace("VIBRATION", '<a href="https://youtube.com/"> VIBRATION </a>')
+        post.calculations = out
+#        print(re.findall("href", out), len(re.findall("href", out)), out_count)
+        post.save()
+#        print(out)
+
+
+
 
     with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+"/drc.mop", inplace=True, backup='.bak') as file:
         for line in file:

@@ -13,9 +13,12 @@
 
 
 {% if post.calculated %}
-           
-  <p align = "right">{{ post.calculations }}</p>
-          
+  <pre>  
+    <a href="https://youtube.com">
+      cos
+    </a>       
+  {{ post.calculations |safe }}
+  </pre>       
 {% endif %}
 
 

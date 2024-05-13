@@ -13,6 +13,7 @@ class Post(models.Model):
     metoda = models.TextField()
     calculated = models.BooleanField(default = False)
     calculations = models.TextField()
+    vibration_count = models.IntegerField(default = 0)
     
 
     def __str__(self):

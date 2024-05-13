@@ -4,3 +4,14 @@
 (1) Open Firefox. Go to the URL about:config (type this in the URL bar at the top of the Firefox window.)
 
 (2) Set the switch "security.fileuri.strict_origin_policy" to "false" - this can be done by clicking on the switch.
+
+Instalacja
+<pre>
+git clone git@github.com:ugbioinformatics/programming_project_WCh_2024.git
+cd programming_project_WCh_2024/abecadlo/
+python3 manage.py makemigrations blog
+python3 manage.py migrate
+python3 manage.py runserver
+</pre>
+
+

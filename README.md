@@ -24,10 +24,6 @@ cd abecadlo/
 mv ../../jsmol media
 python3 manage.py makemigrations blog
 python3 manage.py migrate
-wget https://sourceforge.net/projects/jmol/files/Jmol/Version%2014.0/Version%2014.0.13/Jmol-14.0.13-binary.tar.gz
-tar zxvf Jmol-14.0.13-binary.tar.gz
-
-          
 python3 manage.py runserver
 </pre>
 

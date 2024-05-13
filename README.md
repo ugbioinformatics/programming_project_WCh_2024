@@ -16,7 +16,9 @@ ln -s /usr/lib/python3/dist-packages/openbabel $VIRTUAL_ENV/lib/python*/site-pac
 
 <pre>
 git clone git@github.com:ugbioinformatics/programming_project_WCh_2024.git
-cd programming_project_WCh_2024/abecadlo/
+cd programming_project_WCh_2024          
+pip install -r requirements.txt
+cd abecadlo/
 python3 manage.py makemigrations blog
 python3 manage.py migrate
 python3 manage.py runserver

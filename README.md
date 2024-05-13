@@ -14,12 +14,20 @@ ln -s /usr/lib/python3/dist-packages/openbabel $VIRTUAL_ENV/lib/python*/site-pac
 
 <h3>Nasza aplikacja django</h3>
 <pre>
+wget https://sourceforge.net/projects/jmol/files/Jmol/Version%2014.0/Version%2014.0.13/Jmol-14.0.13-binary.tar.gz
+tar zxvf Jmol-14.0.13-binary.tar.gz
+unzip jmol-14.0.13/jsmol.zip          
 git clone git@github.com:ugbioinformatics/programming_project_WCh_2024.git
 cd programming_project_WCh_2024          
 pip install -r requirements.txt
 cd abecadlo/
+mv ../../jsmol media
 python3 manage.py makemigrations blog
-python3 manage.py migrate
+python3 manage.py migration
+wget https://sourceforge.net/projects/jmol/files/Jmol/Version%2014.0/Version%2014.0.13/Jmol-14.0.13-binary.tar.gz
+tar zxvf Jmol-14.0.13-binary.tar.gz
+
+          
 python3 manage.py runserver
 </pre>
 

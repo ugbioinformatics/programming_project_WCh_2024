@@ -39,7 +39,7 @@ def calculate(post, id):
 
     czasteczka = next(openbabel.pybel.readfile("mopout",settings.MEDIA_ROOT+'/'+str(id)+"/molecule.out"))
     czasteczka.write(format="mop",filename=settings.MEDIA_ROOT+'/'+str(id)+"/force.mop",overwrite=True)
-    czasteczka.write(format="mop",filename=settings.MEDIA_ROOT+'/'+str(id)+"/drc.mop",overwrite=True)
+#    czasteczka.write(format="mop",filename=settings.MEDIA_ROOT+'/'+str(id)+"/drc.mop",overwrite=True)
     metoda = post.metoda
     with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+"/force.mop", inplace=True, backup='.bak') as file:
         for line in file:
@@ -65,8 +65,12 @@ def calculate(post, id):
 #                    print("CCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDddd")
                     continue
 #                print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
-                for i in range(8):
+                out_temp = line
+                out_temp = out_temp.replace(" VIBRATION", f'<a href="/media/{post.id}/drc{out_count+1}.html"> VIBRATION </a>')
+                out = out + out_temp
+                for i in range(2,8):
                     out = out + nazwa[index + i]
+                    
 #                print(out)
                 out_count = out_count + 1
 
@@ -76,20 +80,26 @@ def calculate(post, id):
             index = index + 1
 #        print(out_count)
 #        post.calculations = out
-        post.vibration_count = float(out_count)
-
-        out = out.replace("VIBRATION", '<a href="https://youtube.com/"> VIBRATION </a>')
+#            post.vibration_count = (out_count)
+#                out = out.replace(" VIBRATION", f'<a href="/media/{post.id}/drc{out_count}.html"> VIBRATION </a>')
+#                out = re.sub()
         post.calculations = out
 #        print(re.findall("href", out), len(re.findall("href", out)), out_count)
+        post.vibration_count = (out_count)
         post.save()
 #        print(out)
 
 
+    for i in range(1,post.vibration_count+1):
+        czasteczka.write(format="mop",filename=settings.MEDIA_ROOT+'/'+str(id)+f"/drc{i}.mop",overwrite=True)
+    
+    
+        with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+f"/drc{i}.mop", inplace=True, backup='.bak') as file:
+            for line in file:
+                print(line.replace('PUT KEYWORDS HERE',f"{metoda} irc={i}* DRC BIGCYCLES=1 html t-priority=0.5"), end='')
 
-
-    with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+"/drc.mop", inplace=True, backup='.bak') as file:
-        for line in file:
-            print(line.replace('PUT KEYWORDS HERE',f"{metoda} irc=1* DRC BIGCYCLES=1 html t-priority=0.5"), end='')
-
-    subprocess.run(['/opt/mopac/MOPAC2016.exe', 'drc.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
+        subprocess.run(['/opt/mopac/MOPAC2016.exe', f'drc{i}.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
+    post.calculated = True
+    post.save()
+    
 

@@ -41,9 +41,12 @@ def heat_energy(id):
         if line.startswith('          TOTAL ENERGY            ='):
             energy = float(line.split()[-2])
         if line.startswith(' CYCLE:'):
-            a = line.split()
-            GRAD.append(float(a[-1]))
-            HEAT.append(float(a[-3]))
+            a = line.split(":")
+#            GRAD.append(float(c.split()[-2]))
+            c = a[-2]
+            c.split()[-2]
+            HEAT.append(float(a[-1]))
+            GRAD.append(float(c.split()[-2]))
 #    print(GRAD)
 #    print(HEAT)
     plt.plot(GRAD)

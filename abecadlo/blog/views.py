@@ -44,7 +44,7 @@ def heat_energy(id):
             a = line.split(":")
 #            GRAD.append(float(c.split()[-2]))
             c = a[-2]
-            c.split()[-2]
+#            c.split()[-2]
             HEAT.append(float(a[-1]))
             GRAD.append(float(c.split()[-2]))
 #    print(GRAD)

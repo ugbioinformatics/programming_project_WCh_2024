@@ -22,9 +22,20 @@ def metoda(id,metoda):
     
     with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+"/molecule.mop", inplace=True, backup='.bak') as file:
         for line in file:
-            print(line.replace('PUT KEYWORDS HERE',metoda), end='')
+            print(line.replace('PUT KEYWORDS HERE',metoda + " html"), end='')
     return
     
+
+def metoda2(id,metoda):
+    import fileinput
+    from django.conf import settings
+    
+    with fileinput.FileInput(settings.MEDIA_ROOT+'/'+str(id)+"/molecule2.mop", inplace=True, backup='.bak') as file:
+        for line in file:
+            print(line.replace('PUT KEYWORDS HERE',metoda + " html"), end='')
+    return
+
+
 def heat_energy(id):
     from django.conf import settings
     import openbabel.pybel
@@ -199,11 +210,38 @@ def CIRconvert_Views_Reaction(request):
 
             post.metoda = form.cleaned_data["pole_metoda"]
             metoda(post.id,post.metoda)
+            metoda2(post.id,post.metoda)
             subprocess.run(['/opt/mopac/MOPAC2016.exe', 'molecule.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
             subprocess.run(['/opt/mopac/MOPAC2016.exe', 'molecule2.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
             post.cieplo1, post.energia1 = heat_energy(post.id)
             post.cieplo2, post.energia2 = heat_energy(post.id)
             post.save()
+
+            from django.conf import settings
+            with open(settings.MEDIA_ROOT+'/'+str(post.id)+"/saddle.mop", 'w+') as file:
+                file.write("geo_dat='molecule.arc' +" + "\n")
+                file.write("geo_ref='molecule2.arc' +" + "\n")
+                file.write("saddle html xyz  bar=0.005" + "\n")
+                file.write("Locating transition state using SADDLE" + "\n")
+            subprocess.run(['/opt/mopac/MOPAC2016.exe', 'saddle.mop'], cwd = settings.MEDIA_ROOT+'/'+str(post.id))
+
+
+
+            with open(settings.MEDIA_ROOT+'/'+str(post.id)+"/saddle.out") as file:
+                print("file open")
+                for line in file:
+                    if "Empirical Formula" in line:
+                        aaa = int(line.split()[-2])
+                        print(aaa)
+                        print(aaa)
+                        print(aaa)
+                        print(aaa)
+                        print(aaa)
+
+#                    print(line)
+
+
+
             return redirect('/')
     else:
         form = Suma2()

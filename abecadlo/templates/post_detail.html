@@ -3,25 +3,25 @@
 {% block content %}
 
 <div class="post-entry">
-  <h2>{{ post.nazwa }}</h2>
-  <p>{{ post.smiles }}</p>
+  <h2 style="color:#FFFFFF";>{{ post.nazwa }}</h2>
+  <p style="color:#FFFFFF";>{{ post.smiles }}</p>
   {% if not post.smiles1 != "" %}
-  <p>Heat of Formation: {{ post.cieplo }} KJ/MOL </p>  
-  <p>Total Energy: {{ post.energia }} EV </p>  
-  <p>Method Used: {{ post.metoda }} </p>  
+  <p style="color:#FFFFFF";>Heat of Formation: {{ post.cieplo }} KJ/MOL </p>  
+  <p style="color:#FFFFFF";>Total Energy: {{ post.energia }} EV </p>  
+  <p style="color:#FFFFFF";>Method Used: {{ post.metoda }} </p>  
   {% else %}
-  <p>Heat of Formation1: {{ post.cieplo1 }} KJ/MOL </p>  
-  <p>Total Energy1: {{ post.energia1 }} EV </p>  
-  <p>Heat of Formation2: {{ post.cieplo2 }} KJ/MOL </p>  
-  <p>Total Energy2: {{ post.energia2 }} EV </p>  
-  <p>Method Used: {{ post.metoda }} </p>  
+  <p style="color:#FFFFFF";>Heat of Formation1: {{ post.cieplo1 }} KJ/MOL </p>  
+  <p style="color:#FFFFFF";>Total Energy1: {{ post.energia1 }} EV </p>  
+  <p style="color:#FFFFFF";>Heat of Formation2: {{ post.cieplo2 }} KJ/MOL </p>  
+  <p style="color:#FFFFFF";>Total Energy2: {{ post.energia2 }} EV </p>  
+  <p style="color:#FFFFFF";>Method Used: {{ post.metoda }} </p>  
   {% endif %}
 </div>
 
 
 
 {% if post.calculated %}
-<pre>{{ post.calculations |safe }}</pre>       
+<pre style="color:#FFFFFF";>{{ post.calculations |safe }}</pre>       
 {% endif %}
 
 
@@ -44,11 +44,11 @@
     });
   
   </script>
-  <p>Start.mol2</p> 
+  <p style="color:#FFFFFF";>Start.mol2</p> 
   <div id="viewport_start" style="width:400px; height:300px;"></div>
 <img src="/media/{{post.id}}/nalesnik.png">
 <img src="/media/{{post.id}}/placek.png">
-  <p>Molecule.mol2</p>
+  <p style="color:#FFFFFF";>Molecule.mol2</p>
   <div id="viewport" style="width:400px; height:300px;"></div>
 
 

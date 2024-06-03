@@ -2,11 +2,11 @@
 {% block content %}
 
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data",style = "color:#FFFFFF;">
     <fieldset class="inlineLabels">
         {% csrf_token %}
-        <b>New Molecule</b> 
-        <table style="width:100%">
+        <b style = "color:#FFFFFF;">New Molecule</b> 
+        <table style="color:#FFFFFF;">
             {{ form.as_table }}
         </table>
         <button type="submit" class="save btn btn-default">Save & submit</button>

@@ -5,7 +5,7 @@
 {% for post in post_list %}
   <div class="post-entry">
     <h2><a href="{% url 'post_detail' post.pk %}">{{ post.nazwa }}</a></h2>
-    <p>{{ post.smiles }}</p>
+    <p  style="background-color:rgb(255,255,255);">{{ post.smiles }}</p>
   </div>
   {% endfor %}
 

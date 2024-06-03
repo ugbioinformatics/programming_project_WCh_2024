@@ -5,9 +5,17 @@
 <div class="post-entry">
   <h2>{{ post.nazwa }}</h2>
   <p>{{ post.smiles }}</p>
+  {% if not post.smiles1 != "" %}
   <p>Heat of Formation: {{ post.cieplo }} KJ/MOL </p>  
   <p>Total Energy: {{ post.energia }} EV </p>  
   <p>Method Used: {{ post.metoda }} </p>  
+  {% else %}
+  <p>Heat of Formation1: {{ post.cieplo1 }} KJ/MOL </p>  
+  <p>Total Energy1: {{ post.energia1 }} EV </p>  
+  <p>Heat of Formation2: {{ post.cieplo2 }} KJ/MOL </p>  
+  <p>Total Energy2: {{ post.energia2 }} EV </p>  
+  <p>Method Used: {{ post.metoda }} </p>  
+  {% endif %}
 </div>
 
 

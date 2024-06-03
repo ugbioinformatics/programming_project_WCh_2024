@@ -7,8 +7,18 @@
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
   </head>
   <body>
+  <style>
+body {
+  background-image:url('https://media.tenor.com/onZIFeyPLQoAAAAi/pivo-piwo.gif');
+  background-image:url('https://media1.tenor.com/m/ft295RP2nGoAAAAd/smirk-bee-meme-goofy-ahh-bee-meme-sus-bee-meme-smirk-smirk.gif');
+  background-attachment: fixed;
+  background-size: ;
+  background-position: right;
+
+}
+</style> 
     <div>
-      <header>
+      <header style = "background-color:pink">
         <div class="nav-left">
           <h1><a href="{% url 'home' %}">Molecule Calculator</a></h1>
           <h1><a href="{% url 'post_suma' %}">Add New Molecule</a></h1>
@@ -23,12 +33,11 @@
           {% else %}
           <p align = "right">You are not logged in.<a href="{% url 'login' %}">Log In&nbsp  </a></p>
           <p> If you don't have an account.<a href="{% url 'signup' %}">Sign up</a></p>
-          {% endif %}
-          
+          {% endif %}          
         </div>
       </header>
       {% block content %}
       {% endblock content %}
-    </div>
+    </div> 
   </body>
 </html>

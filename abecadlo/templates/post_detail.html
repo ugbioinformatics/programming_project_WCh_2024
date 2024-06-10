@@ -18,7 +18,9 @@
   {% endif %}
 </div>
 
-
+{% if not post.smiles1 != "" %}
+<a href="/media/{{post.id}}/ts.html"> REACTION </a>
+{% endif %}
 
 {% if post.calculated %}
 <pre style="color:#FFFFFF";>{{ post.calculations |safe }}</pre>       

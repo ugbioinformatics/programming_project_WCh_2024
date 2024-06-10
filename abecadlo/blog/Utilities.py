@@ -102,6 +102,7 @@ def calculate(post, id):
         post.vibration_count = (out_count)
         post.save()
 #        print(out)
+        #print(out)
 
 
     for i in range(1,post.vibration_count+1):

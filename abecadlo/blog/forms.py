@@ -10,7 +10,6 @@ class Suma(forms.Form):
     #data1 = forms.DateField(initial=datetime.date.today,label="Podaj datę",help_text="data obliczeń")
     #URL = forms.URLField()
     #bool = forms.BooleanField()
-    #bool = forms.BooleanField()
     pole_metoda = forms.ChoiceField(choices = (("AM1", "AM1"), ("PM7", "PM7"), ("PM3", "PM3"), ("RM1", "RM1"), ))
     
     def clean(self):

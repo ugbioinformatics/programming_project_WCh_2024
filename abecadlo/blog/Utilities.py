@@ -103,7 +103,7 @@ def calculate(post, id):
         post.save()
 #        print(out)
         #print(out)
-
+        #print("kalkulator chemiczny")
 
     for i in range(1,post.vibration_count+1):
         czasteczka.write(format="mop",filename=settings.MEDIA_ROOT+'/'+str(id)+f"/drc{i}.mop",overwrite=True)

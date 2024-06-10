@@ -15,12 +15,10 @@
   <p style="color:#FFFFFF";>Heat of Formation2: {{ post.cieplo2 }} KJ/MOL </p>  
   <p style="color:#FFFFFF";>Total Energy2: {{ post.energia2 }} EV </p>  
   <p style="color:#FFFFFF";>Method Used: {{ post.metoda }} </p>  
+  <p style="color:#FFFFFF";><a href="/media/{{post.id}}/ts.html"> REACTION </a></p>
   {% endif %}
 </div>
 
-{% if not post.smiles1 == "" %}
-<a href="/media/{{post.id}}/ts.html"> REACTION </a>
-{% endif %}
 
 {% if post.calculated %}
 <pre style="color:#FFFFFF";>{{ post.calculations |safe }}</pre>       
